@@ -11,9 +11,9 @@ use App\Smbrand;
 use App\Blog;
 use App\Writing;
 use App\Smartphone;
-use App\Blogcategory;
+use App\BlogCategory;
 use App\Mail\notifysubscriber;
-use Illuminate\Support\Facades\Mail; 
+use Illuminate\Support\Facades\Mail;
 use App\Subscriber;
 
 class HomeController extends Controller
@@ -48,7 +48,7 @@ class HomeController extends Controller
       $laptop_count = count($allLaptops);//compact
 
       $allsmartphones = Smartphone::latest()->get();
-      
+
       $smartphone_count = count($allsmartphones);//compact
 
       $laptop_brands = Brand::latest()->get();
@@ -63,7 +63,7 @@ class HomeController extends Controller
 
       $blog_count = count(Blog::latest()->get());// compact
 
-      $blog_cat_count = count(Blogcategory::latest()->get()); // compact
+      $blog_cat_count = count(BlogCategory::latest()->get()); // compact
 
       $underreview = count(Writing::latest()->where('status' , 'Under review')->get()); // compact
 

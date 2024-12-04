@@ -34,7 +34,7 @@ Route::get('/blog_category/{slug}','frontend\BlogController@blogs_by_category')-
 
 // // end blog
 
-// // laptop 
+// // laptop
 
 // // laptop page
 Route::get('/laptops','frontend\LaptopController@index')->name('laptop');
@@ -115,7 +115,7 @@ Route::get('/smartphone/search','frontend\SmartphoneController@search')->name('s
 // end smartphone routes
 
 
-// become a writer 
+// become a writer
 Route::get('/become-a-writer','frontend\HomeController@becmeWriter')->name('become_writer');
 Route::post('/become-a-writer/create','frontend\WritingController@create');
 // end become a writer
@@ -140,36 +140,36 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 // // start blog
 	Route::prefix('/blogs/')->group(function(){
-		Route::get('/','backend\BlogController@index')->name('admin.blogs');
-		Route::get('/create/','backend\BlogController@createpage')->name('admin.blogs_create_page');
-		Route::post('/create-blog/','backend\BlogController@create')->name('admin.blogs_create');
-		Route::get('/getPaginatedBlogs/','backend\BlogController@blogswithpagination')->name('admin.blog_with_pagination');
-		Route::get('/edit/{id}','backend\BlogController@edit_page')->name('admin.blog_edit_page');
-		Route::put('/update/{id}','backend\BlogController@update')->name('admin.blog_update');
+		Route::get('/','Backend\BlogController@index')->name('admin.blogs');
+		Route::get('/create/','Backend\BlogController@createpage')->name('admin.blogs_create_page');
+		Route::post('/create-blog/','Backend\BlogController@create')->name('admin.blogs_create');
+		Route::get('/getPaginatedBlogs/','Backend\BlogController@blogswithpagination')->name('admin.blog_with_pagination');
+		Route::get('/edit/{id}','Backend\BlogController@edit_page')->name('admin.blog_edit_page');
+		Route::put('/update/{id}','Backend\BlogController@update')->name('admin.blog_update');
 		Route::get('/trash',function(){
 			return view('admin.blogs.trashblog');
 		});
-		Route::get('/trashed-blogs','backend\BlogController@trashed_blogs')->name('admin.blogs_trashed');
-		Route::get('/trash/{id}','backend\BlogController@trash')->name('admin.blogs_trash');
-		Route::get('/restore/{id}','backend\BlogController@restore')->name('admin.blogs_restore');
+		Route::get('/trashed-blogs','Backend\BlogController@trashed_blogs')->name('admin.blogs_trashed');
+		Route::get('/trash/{id}','Backend\BlogController@trash')->name('admin.blogs_trash');
+		Route::get('/restore/{id}','Backend\BlogController@restore')->name('admin.blogs_restore');
 
 
 // 		// category
 		Route::prefix('/category/')->group(function(){
 
-			Route::get('/','backend\BlogcategoryController@index')->name('admin.blog_category');
+			Route::get('/','Backend\BlogcategoryController@index')->name('admin.blog_category');
 
-			Route::get('/getcategory','backend\BlogcategoryController@blogcategories')->name('admin.blog_category_with_pagination');
+			Route::get('/getcategory','Backend\BlogcategoryController@blogcategories')->name('admin.blog_category_with_pagination');
 
-			Route::get('/getallcategory','backend\BlogcategoryController@allblogcategories')->name('admin.blog_category_all');
+			Route::get('/getallcategory','Backend\BlogcategoryController@allblogcategories')->name('admin.blog_category_all');
 
-			Route::post('/create','backend\BlogcategoryController@create')->name('admin.blog_category_create');
+			Route::post('/create','Backend\BlogcategoryController@create')->name('admin.blog_category_create');
 
-			Route::get('/show/{id}','backend\BlogcategoryController@show');
+			Route::get('/show/{id}','Backend\BlogcategoryController@show');
 
-			Route::put('/update/{id}','backend\BlogcategoryController@update');
+			Route::put('/update/{id}','Backend\BlogcategoryController@update');
 
-			Route::get('/delete/{id}','backend\BlogcategoryController@delete');
+			Route::get('/delete/{id}','Backend\BlogcategoryController@delete');
 		});
 
 	});
@@ -177,7 +177,7 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 	//end blog routes
 	Route::prefix('/')->middleware(['can:isAdmin'])->group(function() {
 
-	
+
 		//brand routes
 		Route::prefix('/brands/')->group(function(){
 
@@ -186,27 +186,27 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 
 			//brand create function
-			Route::post('/create/','backend\BrandController@create')->name('admin.brand_create');
+			Route::post('/create/','Backend\BrandController@create')->name('admin.brand_create');
 
 
 			// brand with pagination
-			Route::get('/brandWithPagination/','backend\BrandController@brandWithPagination')->name('admin.brandWithPagination');
+			Route::get('/brandWithPagination/','Backend\BrandController@brandWithPagination')->name('admin.brandWithPagination');
 
 
 			// brand with pagination
-			Route::get('/brandNoPagination/','backend\BrandController@brandNoPagination')->name('admin.brandNoPagination');
+			Route::get('/brandNoPagination/','Backend\BrandController@brandNoPagination')->name('admin.brandNoPagination');
 
 
 			//brand show for editing
-			Route::get('/show/{id}','backend\BrandController@show')->name('admin.brandShow');
+			Route::get('/show/{id}','Backend\BrandController@show')->name('admin.brandShow');
 
 
 			//brand update function
-			Route::put('/update/{id}','backend\BrandController@update')->name('admin.brandUpdate');
+			Route::put('/update/{id}','Backend\BrandController@update')->name('admin.brandUpdate');
 
 
 			//brand trash function
-			Route::get('/trash/{id}','backend\BrandController@trash')->name('admin.brandTrash');
+			Route::get('/trash/{id}','Backend\BrandController@trash')->name('admin.brandTrash');
 
 
 			//brand trash page
@@ -214,11 +214,11 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 
 			//get trashed brandstrashed_brands
-			Route::get('/trashed_brands/','backend\BrandController@trashed_brands')->name('admin.trashedBrands');
+			Route::get('/trashed_brands/','Backend\BrandController@trashed_brands')->name('admin.trashedBrands');
 
 
 			// brand restore function
-			Route::get('/restore/{id}','backend\BrandController@restore')->name('admin.BrandsRecover');
+			Route::get('/restore/{id}','Backend\BrandController@restore')->name('admin.BrandsRecover');
 
 
 			//permanent delete
@@ -226,7 +226,7 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 		});
 
-	
+
 
 
 	//end brand routes
@@ -244,23 +244,23 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 
 		// add laptop function
-		Route::post('/add','backend\LaptopController@create');
+		Route::post('/add','Backend\LaptopController@create');
 
 
 		//laptop with pagination
-		Route::get('/laptopsWithPagination','backend\LaptopController@index');
+		Route::get('/laptopsWithPagination','Backend\LaptopController@index');
 
 
 		//laptop edit page
-		Route::get('/edit/{id}','backend\LaptopController@edit');
+		Route::get('/edit/{id}','Backend\LaptopController@edit');
 
 
 		//laptop update
-		Route::put('/update/{id}','backend\LaptopController@update');
+		Route::put('/update/{id}','Backend\LaptopController@update');
 
 
 		// laptop trash
-		Route::get('/trash/{id}','backend\LaptopController@trash');
+		Route::get('/trash/{id}','Backend\LaptopController@trash');
 
 
 		//laptop trash page
@@ -268,11 +268,11 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 
 		// trashed laptops
-		Route::get('/trashed-laptop','backend\LaptopController@trashedLaptop');
-		
+		Route::get('/trashed-laptop','Backend\LaptopController@trashedLaptop');
+
 
 		//restore
-		Route::get('/restore/{id}','backend\LaptopController@restore');
+		Route::get('/restore/{id}','Backend\LaptopController@restore');
 
 	});
 
@@ -286,25 +286,25 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 		Route::get('/',function(){return view('admin.advertisement.ads');})->name('admin.ads');
 
-		Route::post('/store/','backend\AdvertisementController@store');
+		Route::post('/store/','Backend\AdvertisementController@store');
 
 		//paginated ads api
-		Route::get('/ads_paginated/','backend\AdvertisementController@get_paginated_ads');
+		Route::get('/ads_paginated/','Backend\AdvertisementController@get_paginated_ads');
 
 		//get ads by id
-		Route::get('/show/{id}','backend\AdvertisementController@show');
+		Route::get('/show/{id}','Backend\AdvertisementController@show');
 
 		//update ads
-		Route::put('/update/{id}','backend\AdvertisementController@update');
+		Route::put('/update/{id}','Backend\AdvertisementController@update');
 
 		//trash ads
-		Route::get('/trash/{id}','backend\AdvertisementController@trash');
+		Route::get('/trash/{id}','Backend\AdvertisementController@trash');
 
 		//trashed ads
-		Route::get('/trashed','backend\AdvertisementController@trashed');
+		Route::get('/trashed','Backend\AdvertisementController@trashed');
 
 		//restore ads
-		Route::get('/restore/{id}','backend\AdvertisementController@restore');
+		Route::get('/restore/{id}','Backend\AdvertisementController@restore');
 
 		// advertisement category routes
 		Route::prefix('/category/')->group(function(){
@@ -315,27 +315,27 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 
 			// category create function
-			Route::post('/create/','backend\AdvertisementcategoryController@create');
+			Route::post('/create/','Backend\AdvertisementcategoryController@create');
 
 
 			// ads category with pagination
-			Route::get('/all_ads_cat/','backend\AdvertisementcategoryController@ads_cat_all');
+			Route::get('/all_ads_cat/','Backend\AdvertisementcategoryController@ads_cat_all');
 
 
 			// ads category with pagination
-			Route::get('/ads-cat-pagination/','backend\AdvertisementcategoryController@ads_cat_paginate');
+			Route::get('/ads-cat-pagination/','Backend\AdvertisementcategoryController@ads_cat_paginate');
 
 
 			//ads cat edit
-			Route::get('/edit/{id}','backend\AdvertisementcategoryController@show');
+			Route::get('/edit/{id}','Backend\AdvertisementcategoryController@show');
 
 
 			// ads cat update functtion
-			Route::put('/update/{id}','backend\AdvertisementcategoryController@update');
+			Route::put('/update/{id}','Backend\AdvertisementcategoryController@update');
 
 
-			//trash function 
-			Route::get('/trash/{id}','backend\AdvertisementcategoryController@trash');
+			//trash function
+			Route::get('/trash/{id}','Backend\AdvertisementcategoryController@trash');
 
 
 			//trash page
@@ -343,11 +343,11 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 
 
 			//trashed categories ads
-			Route::get('/trashed','backend\AdvertisementcategoryController@trash_category');
+			Route::get('/trashed','Backend\AdvertisementcategoryController@trash_category');
 
 
 			//restore function
-			Route::get('/restore/{id}','backend\AdvertisementcategoryController@restore');
+			Route::get('/restore/{id}','Backend\AdvertisementcategoryController@restore');
 
 
 
@@ -362,23 +362,23 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 	Route::prefix('/users/')->group(function(){
 
 		//user page
-		Route::get('/','backend\UserController@index')->name('user');
+		Route::get('/','Backend\UserController@index')->name('user');
 
 
 		// create page
-		Route::get('/create','backend\UserController@create_page')->name('user.create');
+		Route::get('/create','Backend\UserController@create_page')->name('user.create');
 
 		// create
-		Route::post('/create-user','backend\UserController@create');
+		Route::post('/create-user','Backend\UserController@create');
 
 		// paginated
-		Route::get('/paginated','backend\UserController@paginated');
+		Route::get('/paginated','Backend\UserController@paginated');
 
 		// show
-		Route::get('/show-user/{id}','backend\UserController@show');
+		Route::get('/show-user/{id}','Backend\UserController@show');
 
 		// update user
-		Route::put('/update/{id}','backend\UserController@update');
+		Route::put('/update/{id}','Backend\UserController@update');
 
 	});
 	// end user creae edit update
@@ -386,33 +386,33 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 	// subscriber route
 	Route::prefix('/subscribers/')->group(function(){
 
-		Route::get('/','backend\SubscriberController@index')->name('admin.subscriber');
+		Route::get('/','Backend\SubscriberController@index')->name('admin.subscriber');
 
-		Route::get('/paginated','backend\SubscriberController@paginated');
+		Route::get('/paginated','Backend\SubscriberController@paginated');
 
-		Route::get('/delete/{id}','backend\SubscriberController@delete');
+		Route::get('/delete/{id}','Backend\SubscriberController@delete');
 
 	});
 	// end subscriber route
 
 	});// gate validation
 
-	Route::get('/profile','backend\UserController@profile')->name('admin.profile');
+	Route::get('/profile','Backend\UserController@profile')->name('admin.profile');
 
 	// noticeboard routes
 	Route::prefix('/noticeboard/')->group(function(){
 
-		Route::get('/','backend\NoticeboardController@index')->name('admin.noticeboard');
+		Route::get('/','Backend\NoticeboardController@index')->name('admin.noticeboard');
 
-		Route::post('/create','backend\NoticeboardController@create');
+		Route::post('/create','Backend\NoticeboardController@create');
 
-		Route::put('/update/{id}','backend\NoticeboardController@update');
+		Route::put('/update/{id}','Backend\NoticeboardController@update');
 
-		Route::get('/allNotices','backend\NoticeboardController@getNotices');
+		Route::get('/allNotices','Backend\NoticeboardController@getNotices');
 
-		Route::get('/show/{id}','backend\NoticeboardController@show');
+		Route::get('/show/{id}','Backend\NoticeboardController@show');
 
-		Route::get('/delete/{id}','backend\NoticeboardController@delete');
+		Route::get('/delete/{id}','Backend\NoticeboardController@delete');
 
 	});
 	// end noticeboard routes
@@ -421,44 +421,44 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 	// smartphone routes
 	Route::prefix('/smartphones/')->group(function(){
 
-		Route::get('/','backend\SmartphoneController@index')->name('admin.smartphone');
+		Route::get('/','Backend\SmartphoneController@index')->name('admin.smartphone');
 
 
-		Route::get('/add','backend\SmartphoneController@add')->name('admin.smartphone_add');
+		Route::get('/add','Backend\SmartphoneController@add')->name('admin.smartphone_add');
 
 
-		Route::post('/create','backend\SmartphoneController@create');
+		Route::post('/create','Backend\SmartphoneController@create');
 
-		Route::get('/paginated','backend\SmartphoneController@paginated');
+		Route::get('/paginated','Backend\SmartphoneController@paginated');
 
-		Route::get('/edit/{id}','backend\SmartphoneController@edit');
+		Route::get('/edit/{id}','Backend\SmartphoneController@edit');
 
-		Route::get('/trash/{id}','backend\SmartphoneController@trash');
+		Route::get('/trash/{id}','Backend\SmartphoneController@trash');
 
-		Route::get('/trashed','backend\SmartphoneController@trashed');
+		Route::get('/trashed','Backend\SmartphoneController@trashed');
 
-		Route::get('/restore/{id}','backend\SmartphoneController@restore');
+		Route::get('/restore/{id}','Backend\SmartphoneController@restore');
 
 		Route::prefix('/brands/')->group(function(){
 
-			Route::get('/','backend\SmartphonebrandController@index')->name('admin.smartphonebrands');
+			Route::get('/','Backend\SmartphonebrandController@index')->name('admin.smartphonebrands');
 
-			Route::post('/create','backend\SmartphonebrandController@create');
+			Route::post('/create','Backend\SmartphonebrandController@create');
 
-			Route::get('/all','backend\SmartphonebrandController@allbrands');
+			Route::get('/all','Backend\SmartphonebrandController@allbrands');
 
-			Route::get('/paginated','backend\SmartphonebrandController@paginated_brands');
+			Route::get('/paginated','Backend\SmartphonebrandController@paginated_brands');
 
-			Route::get('/show/{id}','backend\SmartphonebrandController@show');
+			Route::get('/show/{id}','Backend\SmartphonebrandController@show');
 
-			Route::put('/update/{id}','backend\SmartphonebrandController@update');
+			Route::put('/update/{id}','Backend\SmartphonebrandController@update');
 
-			Route::get('/trash/{id}','backend\SmartphonebrandController@trash');
+			Route::get('/trash/{id}','Backend\SmartphonebrandController@trash');
 
-			Route::get('/restore/{id}','backend\SmartphonebrandController@restore');
+			Route::get('/restore/{id}','Backend\SmartphonebrandController@restore');
 
-			Route::get('/trashed','backend\SmartphonebrandController@trashedBrands');
-			
+			Route::get('/trashed','Backend\SmartphonebrandController@trashedBrands');
+
 		});
 
 	});
@@ -469,15 +469,15 @@ Route::prefix('/admin/')->middleware(['auth'])->group(function(){
 Route::prefix('/writer-submission/')->group(function(){
 
 
-	Route::get('/','backend\WritingController@index')->name('admin.Writing');
+	Route::get('/','Backend\WritingController@index')->name('admin.Writing');
 
-	Route::get('/paginated','backend\WritingController@paginated');
+	Route::get('/paginated','Backend\WritingController@paginated');
 
-	Route::get('/approve/{id}','backend\WritingController@approve');
+	Route::get('/approve/{id}','Backend\WritingController@approve');
 
-	Route::get('/reject/{id}','backend\WritingController@reject');
+	Route::get('/reject/{id}','Backend\WritingController@reject');
 
-	Route::get('/review/{id}','backend\WritingController@review');
+	Route::get('/review/{id}','Backend\WritingController@review');
 
 });
 	// end become a writer route
@@ -485,5 +485,5 @@ Route::prefix('/writer-submission/')->group(function(){
 
 
 });
-// 
+//
 // // end admin routes

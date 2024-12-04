@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class SmartphoneController extends Controller
 
   public function edit($id){
   	$smartphones =  Smartphone::latest()->with('brand');
-		
+
 		$smartphones=$smartphones->findOrFail($id);
 
 		$smartphones->images=unserialize($smartphones->images);

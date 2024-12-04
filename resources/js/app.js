@@ -34,7 +34,7 @@ const Toast = Swal.mixin({
   }
 })
  window.Toast=Toast;
- 
+
 
 Vue.filter('Trim_title', function(string,num){
   // let array = string.trim().split(' ');
@@ -151,15 +151,15 @@ Vue.component('laptop-sidebar', require('./components/frontend/laptop/laptopSide
 
  Vue.component('submission-from',require('./components/frontend/become-a-writer/form.vue').default);
 
-// end svg 
+// end svg
 
 
 
  // administration
 
- // compage gadget 
+ // compage gadget
  Vue.component('compare-gadget',require('./components/frontend/compare-gadget/CompareGadget.vue').default);
- // compare gadget 
+ // compare gadget
 
 
 
@@ -173,8 +173,8 @@ Vue.component('laptop-sidebar', require('./components/frontend/laptop/laptopSide
  // loader
  Vue.component('loader', require('./components/admin/loader.vue').default);
 
- Vue.component('product-detail-slider', require('./components/frontend/slider/Product-detail-slider.vue').default); 
-// backend
+ Vue.component('product-detail-slider', require('./components/frontend/slider/Product-detail-slider.vue').default);
+// Backend
 
 
 
@@ -182,9 +182,9 @@ Vue.component('laptop-sidebar', require('./components/frontend/laptop/laptopSide
  Vue.component('adminblogcategory', require('./components/admin/blogs/Blogcategory.vue').default);
 
  Vue.component('adminblog', require('./components/admin/blogs/Blog.vue').default);
- 
+
  Vue.component('admincreateblog', require('./components/admin/blogs/CreateBlog.vue').default);
- 
+
  Vue.component('admineditblog', require('./components/admin/blogs/EditBlog.vue').default);
 
  Vue.component('admintrashblog', require('./components/admin/blogs/TrashBlogs.vue').default);
@@ -217,7 +217,7 @@ Vue.component('laptop-sidebar', require('./components/frontend/laptop/laptopSide
  Vue.component('admin-adsmanager',require('./components/admin/advertisement/Ads.vue').default)
 
  Vue.component('admin-ads-category',require('./components/admin/advertisement/AdsCategory.vue').default);
- 
+
  Vue.component('admin-ads-category-trash',require('./components/admin/advertisement/AdsCatTrash.vue').default);
 
  // end ads category component
@@ -258,7 +258,7 @@ Vue.component('laptop-sidebar', require('./components/frontend/laptop/laptopSide
 // subscriber component
  Vue.component('admin-subscriber',require('./components/admin/subscriber/index.vue').default);
 
-// end backend components
+// end Backend components
 
 const app = new Vue({
     el: '#app',

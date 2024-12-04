@@ -8,7 +8,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Blog;
-use App\Blogcategory;
+use App\BlogCategory;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Response;
 
@@ -18,7 +18,7 @@ class BlogController extends Controller
     // blogs page
   public function blogs(){
   	$blogs= Blog::latest()->with('blogcategory','bloguser')->paginate(12);
-  	$blog_categories=Blogcategory::orderBy('name','asc')->get();
+  	$blog_categories=BlogCategory::orderBy('name','asc')->get();
     $title='Blogs';
   	return view('frontend.blogs.blogs',compact('blogs','blog_categories','title'));
   }
@@ -28,7 +28,7 @@ class BlogController extends Controller
 
   public function featured_blogs(){
   	$blogs= Blog::latest()->with('blogcategory','bloguser')->where('featured',true)->paginate(12);
-  	$blog_categories=Blogcategory::orderBy('name','asc')->get();
+  	$blog_categories=BlogCategory::orderBy('name','asc')->get();
     $title='Featured Blogs';
   	return view('frontend.blogs.blogs',compact('blogs','blog_categories','title'));
   }
@@ -47,7 +47,7 @@ class BlogController extends Controller
     $related_blogs=$this->related_blogs($blog->blogcategory,$blog->id);
 
 
-  	$blog_categories=Blogcategory::orderBy('name','asc')->get();
+  	$blog_categories=BlogCategory::orderBy('name','asc')->get();
 
     // $response = new Response('Hello World');
 
@@ -79,11 +79,11 @@ class BlogController extends Controller
 
 
   public function related_blogs($categories,$id){
-    
+
     $blogs=[];
-    $blog_categories=Blogcategory::orderBy('name','asc')->with('blogcategory');
+    $blog_categories=BlogCategory::orderBy('name','asc')->with('blogcategory');
     $allblogs= Blog::latest()->with('blogcategory','bloguser')->get();
- 
+
     foreach($categories as $cat){
       $filtered=$this->filter_blog_by_category($allblogs,$cat->id);
         foreach($filtered as $f){
@@ -92,7 +92,7 @@ class BlogController extends Controller
           }
         }
       }
-    
+
 
     if(count($blogs)==0){
       $bgs=Blog::latest()->with('blogcategory','bloguser')->get();
@@ -104,7 +104,7 @@ class BlogController extends Controller
     }
 
     $blogs=array_unique($blogs);
-    
+
     shuffle($blogs);
 
 
@@ -117,10 +117,10 @@ class BlogController extends Controller
     }else{
       $related=$blogs;
     }
-    
+
 
     shuffle($related);
-    
+
 
     return  $related;
   }
@@ -128,9 +128,9 @@ class BlogController extends Controller
 
   //blog by category function
   public function blogs_by_category($slug){
- 		$blog_cat=Blogcategory::latest()->where('slug', $slug)->with('blogcategory')->first();
+ 		$blog_cat=BlogCategory::latest()->where('slug', $slug)->with('blogcategory')->first();
  		$allblogs= Blog::latest()->with('blogcategory','bloguser')->get();
- 		
+
  		//filtercategory
  		$blogs=$this->filter_blog_by_category($allblogs,$blog_cat->id);
 
@@ -139,7 +139,7 @@ class BlogController extends Controller
 
     $title='Blogs - '. $blog_cat->name;
 
-  	$blog_categories=Blogcategory::orderBy('name','asc')->get();
+  	$blog_categories=BlogCategory::orderBy('name','asc')->get();
   	return view('frontend.blogs.blog_category',compact('blogs','blog_categories','title'));
   }
   //blog by category function

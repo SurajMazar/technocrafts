@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use App\Blog;
 use App\Subscriber;
 
 use App\Mail\notifysubscriber;
-use Illuminate\Support\Facades\Mail; 
+use Illuminate\Support\Facades\Mail;
 class BlogController extends Controller
 {
   public function __construct()
@@ -54,7 +54,7 @@ class BlogController extends Controller
     if($request['meta_description']==''){
       $request['meta_description']=$request['title'];
     }
-    
+
 
   	$blog=Blog::create([
   		'title'=>$request['title'],

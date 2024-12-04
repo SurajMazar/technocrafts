@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -39,7 +39,7 @@ class AdvertisementcategoryController extends Controller
 
   	Advertisementcategory::create([
   		'name'        => $request['name'],
-  		'slug'        => $request['slug'],	
+  		'slug'        => $request['slug'],
   		'description' => $request['description']
   	]);
   }
@@ -59,7 +59,7 @@ class AdvertisementcategoryController extends Controller
 
   // ads category update
   public function update(Request $request,$id){
-  		
+
 		$ads_cat=Advertisementcategory::findOrFail($id);
 
   	if($ads_cat->name!=$request->name){
@@ -71,7 +71,7 @@ class AdvertisementcategoryController extends Controller
 
   	$ads_cat->update([
   		'name'        => $request['name'],
-  		'slug'        => $request['slug'],	
+  		'slug'        => $request['slug'],
   		'description' => $request['description']
   	]);
 

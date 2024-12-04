@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,11 +15,11 @@ class SmartphonebrandController extends Controller
 
 
    public function allbrands(){
-   	return Smbrand::latest()->with('smartphones')->get(); 
+   	return Smbrand::latest()->with('smartphones')->get();
    }
 
    public function paginated_brands(){
-   	return Smbrand::latest()->with('smartphones')->paginate(10); 
+   	return Smbrand::latest()->with('smartphones')->paginate(10);
    }
 
    public function create(crudsmartphonebrands $request){
@@ -88,7 +88,7 @@ class SmartphonebrandController extends Controller
       $imageName=time().'.'.explode('/',explode(':',substr($image,0,strpos($image, ';')))[1])[1];
       $imageExt=explode('.',$imageName);// extract the image extension
 
-      preg_match("/data:image\/(.*?);/",$image,$imageExt[1]); 
+      preg_match("/data:image\/(.*?);/",$image,$imageExt[1]);
       $image = preg_replace('/data:image\/(.*?);base64,/','',$image); // remove the type part
       $image = str_replace(' ', '+', $image);
 

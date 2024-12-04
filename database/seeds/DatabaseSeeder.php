@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        \App\User::query()->create([
+            'name' => 'admin',
+            'image' => 'sad',
+            'email' => 'admin@admin.com',
+            'address' => 'sad',
+            'contact' => 'sad',
+            'role' => 'admin',
+            'gender' => 'male', 'password' => \Illuminate\Support\Facades\Hash::make('password')
+        ]);
     }
 }

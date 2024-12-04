@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class UserController extends Controller
 		return view('admin.users.index');
 	}
   // end create page
-  
+
   // create page
 	public function create_page(){
 		return view('admin.users.create');
@@ -48,7 +48,7 @@ class UserController extends Controller
   	return $request->update_user($id);
   }
 	// end update user
-	
+
 	// update user
   public function profile(){
   	return view('admin.profile.index');

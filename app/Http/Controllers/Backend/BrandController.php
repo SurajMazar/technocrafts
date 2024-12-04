@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Brand;
 
-class Brandcontroller extends Controller
+class BrandController extends Controller
 {
 
 
@@ -128,7 +128,7 @@ class Brandcontroller extends Controller
 			  		}
 
 	  			}
-	  			
+
 	  		}else{
 	  			$request->merge(['brand_image'=>'no-brand-image.jpg']);
 	  		}

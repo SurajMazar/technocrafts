@@ -17,7 +17,7 @@ class Blog extends Model
 	protected $guarded=[];
 
 	public function blogcategory(){
-		return $this->belongsToMany(BlogCategory::class);
+		return $this->belongsToMany(BlogCategory::class,'blog_blogcategory','blogcategory_id','blog_id');
 	}
 
 	public function bloguser(){

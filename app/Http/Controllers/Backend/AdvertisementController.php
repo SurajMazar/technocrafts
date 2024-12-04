@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use App\Advertisement;
 
 class AdvertisementController extends Controller
 {
-    
+
 	public function get_paginated_ads(){//paginated ads
 		return Advertisement::latest()->with('adsCategory')->paginate(10);
 	}//paginated ads

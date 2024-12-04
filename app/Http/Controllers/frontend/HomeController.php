@@ -5,7 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Blog;
-use App\Blogcategory;
+use App\BlogCategory;
 use App\Laptop;
 use PDF;
 use App\Smartphone;
@@ -53,7 +53,7 @@ class HomeController extends Controller
       $smartphone=$smartphones->findOrFail($id);
 
       $smartphone->images=unserialize($smartphone->images);
-     
+
       return $smartphone;
   }
 

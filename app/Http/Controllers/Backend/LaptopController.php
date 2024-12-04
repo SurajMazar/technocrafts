@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -74,7 +74,7 @@ class LaptopController extends Controller
           File::makeDirectory($path, $mode = 0777, true, true);
         }
          $imageName=time().'.'.explode('/',explode(':',substr($request->featured_image,0,strpos($request->featured_image, ';')))[1])[1];
-       \Image::make($request->featured_image)->save(public_path('images/laptops/'. $laptop_name.'/').$imageName);     
+       \Image::make($request->featured_image)->save(public_path('images/laptops/'. $laptop_name.'/').$imageName);
         $request->merge(['featured_image'=> $imageName]);
       }else{
         $request->merge(['featured_image'=> 'no-laptop-image.jpg']);
@@ -106,7 +106,7 @@ class LaptopController extends Controller
       if($request['meta_keyword']==''){
       	$request['meta_keyword']=$request['name'];
       }
-     
+
      	// create function
       $laptop=Laptop::create([
         'name'=>$request['name'],
@@ -256,7 +256,7 @@ class LaptopController extends Controller
       if($request->featured_image){
         if($request->featured_image!=$current_feature_image){
           $imageName=time().'.'.explode('/',explode(':',substr($request->featured_image,0,strpos($request->featured_image, ';')))[1])[1];
-          \Image::make($request->featured_image)->save(public_path('/images/laptops/'. $laptop_name.'/').$imageName);     
+          \Image::make($request->featured_image)->save(public_path('/images/laptops/'. $laptop_name.'/').$imageName);
           $request->merge(['featured_image'=> $imageName]);
           $feature_image=public_path('/images/laptops/'.$laptop_name.'/'). $current_feature_image;
           if(file_exists($feature_image)){
@@ -280,7 +280,7 @@ class LaptopController extends Controller
       }else{
         $current_related_images=unserialize($laptop->related_images);
       }
-      
+
 
       if($related_images=$request->related_images){
         $no_of_images=count($related_images);
@@ -296,7 +296,7 @@ class LaptopController extends Controller
             $saved_related_images[]=$image;
           }
         }
-       
+
         $request->merge(['related_images'=>serialize(array_merge($saved_related_images,$new_related_Images))]);
 
         $old_related_img_count=count($current_related_images);
@@ -381,7 +381,7 @@ class LaptopController extends Controller
 	  }
 	  // laptop end update
 
-	  public function is_base64_string($string)  //check base 64 encode 
+	  public function is_base64_string($string)  //check base 64 encode
     {
       // Check if there is no invalid character in string
       if (!preg_match('/^(?:[data]{4}:(text|image|application)\/[a-z]*)/', $string)){
@@ -394,7 +394,7 @@ class LaptopController extends Controller
 
 
 
-    // trash 
+    // trash
     public function trash($id){
     	$laptop=Laptop::findOrFail($id);
     	$laptop->delete();
@@ -413,7 +413,7 @@ class LaptopController extends Controller
 
 
 
-     // restore 
+     // restore
     public function restore($id){
 	    $trashedBlog=Laptop::onlyTrashed()->findOrFail($id);
 	    $trashedBlog->restore();

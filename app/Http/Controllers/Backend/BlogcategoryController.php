@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Blogcategory;
+use App\BlogCategory;
 
 class BlogcategoryController extends Controller
 {
@@ -18,11 +18,11 @@ class BlogcategoryController extends Controller
   }
 
   public function blogcategories(){
-  	return Blogcategory::orderBy('name','asc')->with('blogcategory')->paginate(10);
+  	return BlogCategory::orderBy('name','asc')->with('blogcategory')->paginate(10);
   }
 
   public function allblogcategories(){
-    return Blogcategory::orderBy('name','asc')->get();
+    return BlogCategory::orderBy('name','asc')->get();
   }
 
   public function create(Request $request){
@@ -31,7 +31,7 @@ class BlogcategoryController extends Controller
   		'slug'=>'required|unique:blogcategory'
   	]);
 
-    Blogcategory::create([
+    BlogCategory::create([
     	'name'=>$request['name'],
     	'slug'=>$request['slug'],
     	'description'=>$request['description'],
@@ -41,7 +41,7 @@ class BlogcategoryController extends Controller
 
 
   public function show($id){
-    return Blogcategory::findOrFail($id);
+    return BlogCategory::findOrFail($id);
   }
 
 
@@ -51,7 +51,7 @@ class BlogcategoryController extends Controller
       'slug'=>'required'
     ]);
 
-    $cat = Blogcategory::findOrFail($id);
+    $cat = BlogCategory::findOrFail($id);
 
     $cat->update([
       'name'=>$request['name'],
@@ -64,7 +64,7 @@ class BlogcategoryController extends Controller
 
   public function delete($id){
 
-    $cat = Blogcategory::findOrFail($id);
+    $cat = BlogCategory::findOrFail($id);
 
     $cat->delete();
 
